@@ -1,0 +1,87 @@
+body {
+  height: 100%;
+  margin: 0;
+  background-color: #84b4e4;
+  overflow:hidden;
+}
+path:hover {
+  stroke: #002868 !important;
+  stroke-width:2px;
+  stroke-linejoin: round;
+  fill: #002868 !important;
+  cursor: pointer;
+}
+#info-box {
+  display: none;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 1;
+  background-color: #333333;
+  /* border: 2px solid #BF0A30; */
+  border-radius: 5px;
+  padding: 4px;
+  font-family: arial;
+  font-size: 12px;
+  color: #fff;
+}
+.center {
+  margin: auto;
+  width: 100%;
+  text-align: center;
+  padding-top: 10px;
+}
+.header-footer {
+  background-color: #3f729b;
+  color: #fff;
+}
+.first-click {
+  fill: #31a354;
+}
+.second-click {
+  fill: #a1d99b;
+}
+.third-click {
+  fill: #de2d26;
+}
+p {
+  font-size: 1.5vw;
+  color: white;
+  filter: drop-shadow( -2px -2px 2px #000 );
+}
+.flash-color {
+  color: #de2d26;
+}
+.fadeIn-color{
+  color: #002868;
+}
+.score-color{
+  color: #31a354;
+}
+.scaling-svg-container {
+  position: relative; 
+  height: 0; 
+  width: 100%; 
+  padding: 0;
+  padding-bottom: 40%; 
+ }
+ .scaling-svg {
+  position: absolute; 
+  height: 100%; 
+  width: 100%; 
+  left: 0; 
+  top: 0;
+ }
+ .shadow {
+  /* Use -webkit- only if supporting: Chrome < 54, iOS < 9.3, Android < 4.4.4 */
+  /* -webkit-filter: drop-shadow( -5px -5px 5px #000 );  */
+          filter: drop-shadow( -5px -5px 5px #000 );
+}
+.emoji {
+  font-size:4rem;
+  width:100%;
+  text-align: center;
+}
+.emoji-comment {
+  text-align: center;
+}
