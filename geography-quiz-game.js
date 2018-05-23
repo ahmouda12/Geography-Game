@@ -4,7 +4,7 @@ let score = 100;
 let timer = "";
 let clickCount = 0;
 let startInterval = null;
-let stop = false;
+// let stop = false;
 let fadeOut = 0;
 let fadeIn = 0;
 let minutes = 0;
@@ -12,7 +12,7 @@ let seconds = 0;
 let stateInfoLength;
 let stateInfoLength2;
 
-let usInfo = {HI:"Hawaii",AK:"Alaska",FL:"Florida",SC:"South Carolina",GA:"Georgia",AL:"Alabama",NC:"North Carolina",
+let usaInfo = {HI:"Hawaii",AK:"Alaska",FL:"Florida",SC:"South Carolina",GA:"Georgia",AL:"Alabama",NC:"North Carolina",
 TN:"Tennessee",RI:"Rhode Island",CT:"Connecticut",MA:"Massachusetts",ME:"Maine",NH:"New Hampshire",VT:"Vermont",
 NY:"New York",NJ:"New Jersey",PA:"Pennsylvania",DE:"Delaware",MD:"Maryland",WV:"West Virginia",KY:"Kentucky",
 OH:"Ohio",MI:"Michigan",WY:"Wyoming",MT:"Montana",ID:"Idaho",WA:"Washington",TX:"Texas",CA:"California",AZ:"Arizona",
@@ -38,68 +38,128 @@ SK:"Slovakia",MT:"Malta",SI:"Slovenia",SM:"San Marino",UA:"Ukraine",SE:"Sweden",
 let southAmericaInfo = {PY:"Paraguay",COL:"Colombia",VE:"Venezuela",CL:"Chile",SR:"Suriname",BO:"Bolivia",EC:"Ecuador",
 ARG:"Argentina",GY:"Guyana",BR:"Brazil",PE:"Peru",UY:"Uruguay",FK:"Falkland Islands"}
 
+let asiaInfo = {BD:"Bangladesh",MON:"Mongolia",BN:"Brunei",BH:"Bahrain",BT:"Bhutan",HK:"Hong Kong",JO:"Jordan",PS:"Palestine",
+LB:"Lebanon",LAS:"Laos",TW:"Taiwan",TR:"Turkey",LK:"Sri Lanka",TL:"Timor-Leste",TM:"Turkmenistan",TJ:"Tajikistan",TH:"Thailand",
+XC:"Northern Cyprus",NP:"Nepal",PK:"Pakistan",PH:"Philippines",SIG:"Siachen Glacier",AE:"United Arab Emirates",CN:"China",
+AF:"Afghanistan",IQ:"Iraq",JP:"Japan",IR:"Iran",AM:"Armenia",SY:"Syria",VN:"Vietnam",GE:"Georgia",ISL:"Israel",IND:"India",
+AZB:"Azerbaijan",IDO:"Indonesia",OM:"Oman",KG:"Kyrgyzstan",UZ:"Uzbekistan",MM:"Myanmar",SG:"Singapore",KH:"Cambodia",CY:"Cyprus",
+QA:"Qatar",KR:"South Korea",KP:"North Korea",KW:"Kuwait",KZ:"Kazakhstan",SA:"Saudi Arabia",MY:"Malaysia",YE:"Yemen"}
+
+let canadaInfo = {CANT:"Northwest Territories",CANU:"Nunavut",CANS:"Nova Scotia",CABC:"British Columbia",CASK:"Saskatchewan",
+CAQC:"Québec",CAPE:"Prince Edward Island",CAMB:"Manitoba",CAYT:"Yukon",CANB:"New Brunswick",CANL:"Newfoundland and Labrador",
+CAON:"Ontario",CAAB:"Alberta"}
+
+let centralAmericaInfo = {CAMPR:"Puerto Rico",CAMDO:"Dominican Republic",CAMNI:"Nicaragua",CAMPA:"Panama",CAMSV:"El Salvador",
+CAMHT:"Haiti",CAMTT:"Trinidad and Tobago",CAMJM:"Jamaica",CAMGT:"Guatemala",CAMHN:"Honduras",CAMBZ:"Belize",CAMBS:"Bahamas",
+CAMCR:"Costa Rica",CAMMX:"Mexico",CAMCU:"Cuba"}
+
+let australiaInfo = {AUACT:"Australian Capital Territory",AUWA:"Western Australia",AUTAS:"Tasmania",AUVIC:"Victoria",
+AUNT:"Northern Territory",AUQLD:"Queensland",AUSA:"South Australia",AUNSW:"New South Wales"}
+
 $( window ).on( "load", function() {
-  $("#us-map").hide();
+  $("#usa-map").hide();
   $("#africa-map").hide();
   $("#europe-map").hide();
   $("#south-america-map").hide();
+  $("#asia-map").hide();
+  $("#canada-map").hide();
+  $("#central-america-map").hide();
+  $("#australia-map").hide();
   $("#click-start").hide();
   $("#start-game").hide();
   $("#state-id").hide();
   $("#score").hide();
   gameStartBinding();
   gameRestartBinding();
+  usaMap();
+  africaMap();
+  europeMap();
+  southAmericaMap();
+  asiaMap();
+  canadaMap();
+  centralAmericaMap();
+  australiaMap();
   // info();
 });
 
-$("#hide-us").click(function(e) {
-  $("#us-map").show();
-  $("#hide-us").hide();
-  $("#hide-africa").hide();
-  $("#hide-europe").hide();
-  $("#hide-south-america").hide();
+function usaMap() {
+$("#hide-usa").click(function(e) {
+  $("#wold-flag-map").hide();
+  $("#select-map").hide();
+  $("#usa-map").show();
+  $("#hide-usa").off();
+  $("#hide-africa").off();
+  $("#hide-europe").off();
+  $("#hide-south-america").off();
+  $("#hide-asia").off();
+  $("#hide-canada").off();
+  $("#hide-central-america").off();
+  $("#hide-australia").off();
   $("#click-start").show();
   $("#start-game").show();
-  stateInfo = usInfo;
-  stateInfo2 = usInfo;
-  timer = "0:05";
+  stateInfo = usaInfo;
+  stateInfo2 = usaInfo;
+  timer = "3:00";
   info();
-});
+})};
 
+function africaMap() {
 $("#hide-africa").click(function(e) {
+  $("#wold-flag-map").hide();
+  $("#select-map").hide();
   $("#africa-map").show();
-  $("#hide-us").hide();
-  $("#hide-africa").hide();
-  $("#hide-europe").hide();
-  $("#hide-south-america").hide();
+  $("#hide-usa").off();
+  $("#hide-africa").off();
+  $("#hide-europe").off();
+  $("#hide-south-america").off();
+  $("#hide-asia").off();
+  $("#hide-canada").off();
+  $("#hide-central-america").off();
+  $("#hide-australia").off();
   $("#click-start").show();
   $("#start-game").show();
   stateInfo = africaInfo;
   stateInfo2 = africaInfo;
-  timer = "0:05";
+  timer = "3:00";
   info();
-});
+})};
 
+function europeMap() {
 $("#hide-europe").click(function(e) {
+  $("#wold-flag-map").hide();
+  $("#select-map").hide();
   $("#europe-map").show();
-  $("#hide-us").hide();
-  $("#hide-africa").hide();
-  $("#hide-europe").hide();
-  $("#hide-south-america").hide();
+  $("#hide-usa").off();
+  $("#hide-africa").off();
+  $("#hide-europe").off();
+  $("#hide-south-america").off();
+  $("#hide-asia").off();
+  $("#hide-canada").off();
+  $("#hide-central-america").off();
+  $("#hide-australia").off();
   $("#click-start").show();
   $("#start-game").show();
   stateInfo = europeInfo;
   stateInfo2 = europeInfo;
-  timer = "0:05";
+  timer = "3:00";
   info();
-});
+})};
 
+function southAmericaMap() {
+  stateInfo = southAmericaInfo;
+  stateInfo2 = southAmericaInfo;
 $("#hide-south-america").click(function(e) {
+  $("#wold-flag-map").hide();
+  $("#select-map").hide();
   $("#south-america-map").show();
-  $("#hide-us").hide();
-  $("#hide-africa").hide();
-  $("#hide-europe").hide();
-  $("#hide-south-america").hide();
+  $("#hide-usa").off();
+  $("#hide-africa").off();
+  $("#hide-europe").off();
+  $("#hide-south-america").off();
+  $("#hide-asia").off();
+  $("#hide-canada").off();
+  $("#hide-central-america").off();
+  $("#hide-australia").off();
   $("#click-start").show();
   $("#start-game").show();
   stateInfo = southAmericaInfo;
@@ -107,7 +167,94 @@ $("#hide-south-america").click(function(e) {
   timer = "1:00";
   $("#timer").text("01m 00s");
   info();
-});
+})};
+
+function canadaMap() {
+  $("#hide-canada").click(function(e) {
+    $("#wold-flag-map").hide();
+    $("#select-map").hide();
+    $("#canada-map").show();
+    $("#hide-usa").off();
+    $("#hide-africa").off();
+    $("#hide-europe").off();
+    $("#hide-south-america").off();
+    $("#hide-asia").off();
+    $("#hide-canada").off();
+    $("#hide-central-america").off();
+    $("#hide-australia").off();
+    $("#click-start").show();
+    $("#start-game").show();
+    stateInfo = canadaInfo;
+    stateInfo2 = canadaInfo;
+    timer = "1:00";
+    $("#timer").text("01m 00s");
+    info();
+})};
+
+function asiaMap() {
+  $("#hide-asia").click(function(e) {
+    $("#wold-flag-map").hide();
+    $("#select-map").hide();
+    $("#asia-map").show();
+    $("#hide-usa").off();
+    $("#hide-africa").off();
+    $("#hide-europe").off();
+    $("#hide-south-america").off();
+    $("#hide-asia").off();
+    $("#hide-canada").off();
+    $("#hide-central-america").off();
+    $("#hide-australia").off();
+    $("#click-start").show();
+    $("#start-game").show();
+    stateInfo = asiaInfo;
+    stateInfo2 = asiaInfo;
+    timer = "3:00";
+    info();
+})};
+
+function centralAmericaMap() {
+  $("#hide-central-america").click(function(e) {
+    $("#wold-flag-map").hide();
+    $("#select-map").hide();
+    $("#central-america-map").show();
+    $("#hide-usa").off();
+    $("#hide-africa").off();
+    $("#hide-europe").off();
+    $("#hide-south-america").off();
+    $("#hide-asia").off();
+    $("#hide-canada").off();
+    $("#hide-central-america").off();
+    $("#hide-australia").off();
+    $("#click-start").show();
+    $("#start-game").show();
+    stateInfo = centralAmericaInfo;
+    stateInfo2 = centralAmericaInfo;
+    timer = "1:00";
+    $("#timer").text("01m 00s");
+    info();
+})};
+
+function australiaMap() {
+  $("#hide-australia").click(function(e) {
+    $("#wold-flag-map").hide();
+    $("#select-map").hide();
+    $("#australia-map").show();
+    $("#hide-usa").off();
+    $("#hide-africa").off();
+    $("#hide-europe").off();
+    $("#hide-south-america").off();
+    $("#hide-asia").off();
+    $("#hide-canada").off();
+    $("#hide-central-america").off();
+    $("#hide-australia").off();
+    $("#click-start").show();
+    $("#start-game").show();
+    stateInfo = australiaInfo;
+    stateInfo2 = australiaInfo;
+    timer = "0:30";
+    $("#timer").text("00m 30s");
+    info();
+})};
 
 function showInfo() {
 $("path").click(function(e) {
@@ -115,9 +262,9 @@ $("path").click(function(e) {
   $("#info-box").html($(this).data('name')).delay(50).fadeOut();
 });
 
-$("path").mouseleave(function(e) {
-  $('#info-box').css('display','none');
-});
+// $("path").mouseleave(function(e) {
+//   $('#info-box').css('display','none');
+// });
 
 $(document).click(function(e) {
   $('#info-box').css('top',e.pageY-$('#info-box').height()-20);
@@ -135,9 +282,10 @@ function gameStartBinding(){
     selectName();
     showInfo();
     //if(stop === false){
-      checkMatch();
+    checkMatch();
     //};
-    $('#click-start').find('#start-game-text').addClass('animated infinite fadeIn fadeIn-color');
+    // $('#click-start').find('#start-game-text').addClass('animated infinite fadeIn fadeIn-color');
+    $('#click-start').find('#start-game-text').addClass('fadeIn-color');
     $('#score').find('#score-number').addClass('score-color');
     $('#score').find('#percentage').addClass('score-color');
   let interval = setInterval(function() {
@@ -157,7 +305,7 @@ function gameStartBinding(){
       clearInterval(interval);
       gameOver()
     }
-    if (seconds <= 10){
+    if ((seconds <= 10) && (minutes == 0)){
       $('#score').find('#timer').addClass('animated infinite flash flash-color');
     }
       timer = minutes + ":" + seconds;
@@ -170,19 +318,25 @@ function gameRestartBinding() {
     console.log("Game over");
     // timer = "0:05";
     score = 100;
-    stop = true;
-    stateInfo = {};
-    stateInfo2 = {};
+    // stop = true;
+    // stateInfo = {};
+    // stateInfo2 = {};
     clickCount = 0;
     info();
-    $("#us-map").hide();
+    $("#wold-flag-map").show();
+    $("#select-map").show();
+    $("#usa-map").hide();
     $("#africa-map").hide();
     $("#europe-map").hide();
     $("#south-america-map").hide();
-    $("#hide-us").show();
-    $("#hide-africa").show();
-    $("#hide-europe").show();
-    $("#hide-south-america").show();
+    $("#asia-map").hide();
+    $("#canada-map").hide();
+    $("#central-america-map").hide();
+    $("#australia-map").hide();
+    // $("#hide-usa").show();
+    // $("#hide-africa").show();
+    // $("#hide-europe").show();
+    // $("#hide-south-america").show();
     $("#click-start").hide();
     $("#start-game").hide();
     $("#score").hide();     
@@ -192,11 +346,20 @@ function gameRestartBinding() {
     $('#score').find('#timer').removeClass('animated infinite flash flash-color');
     $('#score').find('#score-number').removeClass('score-color');
     $('#score').find('#percentage').removeClass('score-color');
-    $('#click-start').find('#start-game-text').removeClass('animated infinite fadeIn fadeIn-color');
+    // $('#click-start').find('#start-game-text').removeClass('animated infinite fadeIn fadeIn-color');
+    $('#click-start').find('#start-game-text').removeClass('fadeIn-color');
     $("#result-header").removeClass("ec ec-lock ec-clap emoji");
     $("#final-score").removeClass("ec ec-stopwatch ec-muscle ec-plus1 ec-thinking ec-slightly-smiling-face emoji");
     $("#comment").removeClass("ec ec-loudspeaker");
-    clearInterval(startInterval);    
+    clearInterval(startInterval);
+    usaMap();
+    africaMap();
+    europeMap();
+    southAmericaMap();
+    asiaMap();
+    canadaMap();
+    centralAmericaMap();
+    australiaMap();    
   })
 }
 
