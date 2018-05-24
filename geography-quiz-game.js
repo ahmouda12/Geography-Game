@@ -24,26 +24,25 @@ let africaInfo = {BF:"Burkina Faso",DJ:"Djibouti",BI:"Burundi",BJ:"Benin",ZA:"So
 ET:"Ethiopia",RW:"Rwanda",TZ:"Tanzania",GQ:"Equatorial Guinea",NA:"Namibia",NGE:"Niger",NG:"Nigeria",TUN:"Tunisia",
 LR:"Liberia",LS:"Lesotho",ZW:"Zimbabwe",TG:"Togo",TD:"Chad",ER:"Eritrea",LY:"Libya",GW:"Guinea-Bissau",ZM:"Zambia",
 CI:"Côte d'Ivoire",EH:"Western Sahara",CM:"Cameroon",EG:"Egypt",SL:"Sierra Leone",CG:"Congo",CF:"Central African Republic",
-AO:"Angola",CD:"Democratic Republic of Congo",GAB:"Gabon",GN:"Guinea",GM:"Gambia",XS:"Somaliland",CV:"Cape Verde",GH:"Ghana",
-SZ:"Swaziland",MG:"Madagascar",MAR:"Morocco",KE:"Kenya",SS:"South Sudan",ML:"Mali",KM:"Comoros",ST:"São Tomé and Principe",
-MW:"Malawi",SO:"Somalia",SN:"Senegal",MR:"Mauritania",UG:"Uganda",SUD:"Sudan",MZ:"Mozambique"}
+AO:"Angola",CD:"Democratic Republic of Congo",GAB:"Gabon",GN:"Guinea",XS:"Somaliland",GH:"Ghana",SZ:"Swaziland",
+MG:"Madagascar",MAR:"Morocco",KE:"Kenya",SS:"South Sudan",ML:"Mali",MW:"Malawi",SO:"Somalia",SN:"Senegal",MR:"Mauritania",
+UG:"Uganda",SUD:"Sudan",MZ:"Mozambique"}
 
-let europeInfo = {BE:"Belgium",FR:"France",BG:"Bulgaria",DK:"Denmark",HR:"Croatia",DE:"Germany",BA:"Bosnia and Herzegovina",
-HU:"Hungary",JE:"Jersey",FI:"Finland",BY:"Belarus",GR:"Greece",RU:"Russia",NL:"Netherlands",PT:"Portugal",NO:"Norway",
-LI:"Liechtenstein",LV:"Latvia",LT:"Lithuania",LU:"Luxembourg",FO:"Faroe Islands",PL:"Poland",XK:"Kosovo",CH:"Switzerland",
-AD:"Andorra",EE:"Estonia",IS:"Iceland",AL:"Albania",IT:"Italy",GG:"Guernsey",CZ:"Czech Republic",IM:"Isle of Man",
-GB:"United Kingdom",AX:"Aland",IE:"Ireland",ES:"Spain",ME:"Montenegro",MD:"Moldova",RO:"Romania",RS:"Serbia",MK:"Macedonia",
-SK:"Slovakia",MT:"Malta",SI:"Slovenia",SM:"San Marino",UA:"Ukraine",SE:"Sweden",AT:"Austria"}
+let europeInfo = {BE:"Belgium",FR:"France",BG:"Bulgaria",DK:"Denmark",HR:"Croatia",DER:"Germany",BA:"Bosnia and Herzegovina",
+HU:"Hungary",FI:"Finland",BY:"Belarus",GR:"Greece",RU:"Russia",NL:"Netherlands",PT:"Portugal",NO:"Norway",LV:"Latvia",
+LT:"Lithuania",LU:"Luxembourg",PL:"Poland",XK:"Kosovo",CH:"Switzerland",EE:"Estonia",IS:"Iceland",ALB:"Albania",IT:"Italy",
+CZ:"Czech Republic",GB:"United Kingdom",IE:"Ireland",ES:"Spain",MEO:"Montenegro",MLD:"Moldova",RO:"Romania",RS:"Serbia",
+MK:"Macedonia",SK:"Slovakia",SI:"Slovenia",UA:"Ukraine",SE:"Sweden",AT:"Austria"}
 
 let southAmericaInfo = {PY:"Paraguay",COL:"Colombia",VE:"Venezuela",CL:"Chile",SR:"Suriname",BO:"Bolivia",EC:"Ecuador",
 ARG:"Argentina",GY:"Guyana",BR:"Brazil",PE:"Peru",UY:"Uruguay",FK:"Falkland Islands"}
 
-let asiaInfo = {BD:"Bangladesh",MON:"Mongolia",BN:"Brunei",BH:"Bahrain",BT:"Bhutan",HK:"Hong Kong",JO:"Jordan",PS:"Palestine",
-LB:"Lebanon",LAS:"Laos",TW:"Taiwan",TR:"Turkey",LK:"Sri Lanka",TL:"Timor-Leste",TM:"Turkmenistan",TJ:"Tajikistan",TH:"Thailand",
-XC:"Northern Cyprus",NP:"Nepal",PK:"Pakistan",PH:"Philippines",SIG:"Siachen Glacier",AE:"United Arab Emirates",CN:"China",
-AF:"Afghanistan",IQ:"Iraq",JP:"Japan",IR:"Iran",AM:"Armenia",SY:"Syria",VN:"Vietnam",GE:"Georgia",ISL:"Israel",IND:"India",
-AZB:"Azerbaijan",IDO:"Indonesia",OM:"Oman",KG:"Kyrgyzstan",UZ:"Uzbekistan",MM:"Myanmar",SG:"Singapore",KH:"Cambodia",CY:"Cyprus",
-QA:"Qatar",KR:"South Korea",KP:"North Korea",KW:"Kuwait",KZ:"Kazakhstan",SA:"Saudi Arabia",MY:"Malaysia",YE:"Yemen"}
+let asiaInfo = {BD:"Bangladesh",MON:"Mongolia",BT:"Bhutan",JO:"Jordan",PS:"Palestine",LB:"Lebanon",LAS:"Laos",TW:"Taiwan",
+TR:"Turkey",LK:"Sri Lanka",TL:"Timor-Leste",TM:"Turkmenistan",TJ:"Tajikistan",TH:"Thailand",NP:"Nepal",PK:"Pakistan",
+PH:"Philippines",AE:"United Arab Emirates",CN:"China",AF:"Afghanistan",IQ:"Iraq",JP:"Japan",IR:"Iran",AM:"Armenia",SY:"Syria",
+VN:"Vietnam",GE:"Georgia",ISL:"Israel",IND:"India",AZB:"Azerbaijan",IDO:"Indonesia",OM:"Oman",KG:"Kyrgyzstan",UZ:"Uzbekistan",
+MM:"Myanmar",KH:"Cambodia",CY:"Cyprus",QA:"Qatar",KR:"South Korea",KP:"North Korea",KW:"Kuwait",KZ:"Kazakhstan",SA:"Saudi Arabia",
+MY:"Malaysia",YE:"Yemen"}
 
 let canadaInfo = {CANT:"Northwest Territories",CANU:"Nunavut",CANS:"Nova Scotia",CABC:"British Columbia",CASK:"Saskatchewan",
 CAQC:"Québec",CAPE:"Prince Edward Island",CAMB:"Manitoba",CAYT:"Yukon",CANB:"New Brunswick",CANL:"Newfoundland and Labrador",
@@ -97,8 +96,8 @@ $("#hide-usa").click(function(e) {
   $("#hide-australia").off();
   $("#click-start").show();
   $("#start-game").show();
-  stateInfo = usaInfo;
-  stateInfo2 = usaInfo;
+  stateInfo = JSON.parse(JSON.stringify(usaInfo));
+  stateInfo2 = JSON.parse(JSON.stringify(usaInfo));
   timer = "3:00";
   info();
 })};
@@ -118,8 +117,8 @@ $("#hide-africa").click(function(e) {
   $("#hide-australia").off();
   $("#click-start").show();
   $("#start-game").show();
-  stateInfo = africaInfo;
-  stateInfo2 = africaInfo;
+  stateInfo = JSON.parse(JSON.stringify(africaInfo));
+  stateInfo2 = JSON.parse(JSON.stringify(africaInfo));
   timer = "3:00";
   info();
 })};
@@ -139,15 +138,13 @@ $("#hide-europe").click(function(e) {
   $("#hide-australia").off();
   $("#click-start").show();
   $("#start-game").show();
-  stateInfo = europeInfo;
-  stateInfo2 = europeInfo;
+  stateInfo = JSON.parse(JSON.stringify(europeInfo));
+  stateInfo2 = JSON.parse(JSON.stringify(europeInfo));
   timer = "3:00";
   info();
 })};
 
 function southAmericaMap() {
-  stateInfo = southAmericaInfo;
-  stateInfo2 = southAmericaInfo;
 $("#hide-south-america").click(function(e) {
   $("#wold-flag-map").hide();
   $("#select-map").hide();
@@ -162,8 +159,9 @@ $("#hide-south-america").click(function(e) {
   $("#hide-australia").off();
   $("#click-start").show();
   $("#start-game").show();
-  stateInfo = southAmericaInfo;
-  stateInfo2 = southAmericaInfo;
+  // console.log('DEBUG ====', stateInfo, southAmericaInfo);
+  stateInfo = JSON.parse(JSON.stringify(southAmericaInfo));
+  stateInfo2 = JSON.parse(JSON.stringify(southAmericaInfo));
   timer = "1:00";
   $("#timer").text("01m 00s");
   info();
@@ -184,8 +182,8 @@ function canadaMap() {
     $("#hide-australia").off();
     $("#click-start").show();
     $("#start-game").show();
-    stateInfo = canadaInfo;
-    stateInfo2 = canadaInfo;
+    stateInfo = JSON.parse(JSON.stringify(canadaInfo));
+    stateInfo2 = JSON.parse(JSON.stringify(canadaInfo));
     timer = "1:00";
     $("#timer").text("01m 00s");
     info();
@@ -206,8 +204,8 @@ function asiaMap() {
     $("#hide-australia").off();
     $("#click-start").show();
     $("#start-game").show();
-    stateInfo = asiaInfo;
-    stateInfo2 = asiaInfo;
+    stateInfo = JSON.parse(JSON.stringify(asiaInfo));
+    stateInfo2 = JSON.parse(JSON.stringify(asiaInfo));
     timer = "3:00";
     info();
 })};
@@ -227,8 +225,8 @@ function centralAmericaMap() {
     $("#hide-australia").off();
     $("#click-start").show();
     $("#start-game").show();
-    stateInfo = centralAmericaInfo;
-    stateInfo2 = centralAmericaInfo;
+    stateInfo = JSON.parse(JSON.stringify(centralAmericaInfo));
+    stateInfo2 = JSON.parse(JSON.stringify(centralAmericaInfo));
     timer = "1:00";
     $("#timer").text("01m 00s");
     info();
@@ -249,8 +247,8 @@ function australiaMap() {
     $("#hide-australia").off();
     $("#click-start").show();
     $("#start-game").show();
-    stateInfo = australiaInfo;
-    stateInfo2 = australiaInfo;
+    stateInfo = JSON.parse(JSON.stringify(australiaInfo));
+    stateInfo2 = JSON.parse(JSON.stringify(australiaInfo));
     timer = "0:30";
     $("#timer").text("00m 30s");
     info();
