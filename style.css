@@ -12,7 +12,7 @@ path:hover {
   cursor: pointer;
 }
 p {
-  font-size: 2vw;
+  font-size: 1.6vw;
   color: white;
   filter: drop-shadow( -2px -2px 2px #000 );
 }
@@ -58,6 +58,9 @@ p {
 }
 .display {
   display: none;
+}
+.col-2-marg {
+  margin-top: -60px;
 }
 .scaling-svg {
   height: auto; 
@@ -177,7 +180,7 @@ a:hover {
 }
 @media (max-width: 768px) {
   .btn {
-    font-size:11px;
+    font-size:10px;
     padding:2px 6px;
   }
 }
@@ -190,12 +193,12 @@ a:hover {
 @media (min-width: 992px) {
   .btn {
     font-size:14px;
-    padding:6px 12px;
+    padding:4px 12px;
   }
 }
 @media (min-width: 1200px) {
   .btn {
-    padding:8px 16px;
-    font-size:18px;
+    font-size:16px;
+    padding:4px 12px;
   }
 }

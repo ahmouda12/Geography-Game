@@ -56,25 +56,28 @@ AUNT:"Northern Territory",AUQLD:"Queensland",AUSA:"South Australia",AUNSW:"New S
 
 //hide all maps on load and call all game functions
 $( window ).on( "load", function() {
-  $("#usa-map,#africa-map,#europe-map,#south-america-map,#asia-map,#canada-map,#central-america-map,#australia-map,#click-start,#start-game,#state-id,#score").hide();
+  $("#usa-map,#africa-map,#europe-map,#south-america-map").hide();
+  $("#asia-map,#canada-map,#central-america-map,#australia-map").hide();
+  $("#click-start,#start-game,#state-id,#score").hide();
   gameStartBinding();
   gameRestartBinding();
-  usaMap();
-  africaMap();
-  europeMap();
-  southAmericaMap();
-  asiaMap();
-  canadaMap();
-  centralAmericaMap();
-  australiaMap();
+  usaMapBinding();
+  africaMapBinding();
+  europeMapBinding();
+  southAmericaMapBinding();
+  asiaMapBinding();
+  canadaMapBinding();
+  centralAmericaMapBinding();
+  australiaMapBinding();
 });
 
 // show USA map and hide thw world flag map image and unbind click on maps and images befor start
-function usaMap() {
+function usaMapBinding() {
 $("#hide-usa").click(function(e) {
   $("#world-flag-map,#select-map").hide();
   $("#usa-map,#click-start,#start-game").show();
-  $("#hide-usa,#hide-africa,#hide-europe,#hide-south-america,#hide-asia,#hide-canada,#hide-central-america,#hide-australia").off();
+  $("#hide-usa,#hide-africa,#hide-europe,#hide-south-america").off();
+  $("#hide-asia,#hide-canada,#hide-central-america,#hide-australia").off();
   stateInfo = JSON.parse(JSON.stringify(usaInfo));
   stateInfo2 = JSON.parse(JSON.stringify(usaInfo));
   timer = "3:00";
@@ -82,11 +85,12 @@ $("#hide-usa").click(function(e) {
 })};
 
 // show Africa map and hide thw world flag map image and unbind click on maps and images befor start
-function africaMap() {
+function africaMapBinding() {
 $("#hide-africa").click(function(e) {
   $("#world-flag-map,#select-map").hide();
   $("#africa-map,#click-start,#start-game").show();
-  $("#hide-usa,#hide-africa,#hide-europe,#hide-south-america,#hide-asia,#hide-canada,#hide-central-america,#hide-australia").off();
+  $("#hide-usa,#hide-africa,#hide-europe,#hide-south-america").off();
+  $("#hide-asia,#hide-canada,#hide-central-america,#hide-australia").off();
   stateInfo = JSON.parse(JSON.stringify(africaInfo));
   stateInfo2 = JSON.parse(JSON.stringify(africaInfo));
   timer = "3:00";
@@ -94,11 +98,12 @@ $("#hide-africa").click(function(e) {
 })};
 
 // show Europe map and hide thw world flag map image and unbind click on maps and images befor start
-function europeMap() {
+function europeMapBinding() {
 $("#hide-europe").click(function(e) {
   $("#world-flag-map,#select-map").hide();
   $("#europe-map,#click-start,#start-game").show();
-  $("#hide-usa,#hide-africa,#hide-europe,#hide-south-america,#hide-asia,#hide-canada,#hide-central-america,#hide-australia").off();
+  $("#hide-usa,#hide-africa,#hide-europe,#hide-south-america").off();
+  $("#hide-asia,#hide-canada,#hide-central-america,#hide-australia").off();
   stateInfo = JSON.parse(JSON.stringify(europeInfo));
   stateInfo2 = JSON.parse(JSON.stringify(europeInfo));
   timer = "3:00";
@@ -106,11 +111,12 @@ $("#hide-europe").click(function(e) {
 })};
 
 // show South America map and hide thw world flag map image and unbind click on maps and images befor start
-function southAmericaMap() {
+function southAmericaMapBinding() {
 $("#hide-south-america").click(function(e) {
   $("#world-flag-map,#select-map").hide();
   $("#south-america-map,#click-start,#start-game").show();
-  $("#hide-usa,#hide-africa,#hide-europe,#hide-south-america,#hide-asia,#hide-canada,#hide-central-america,#hide-australia").off();
+  $("#hide-usa,#hide-africa,#hide-europe,#hide-south-america").off();
+  $("#hide-asia,#hide-canada,#hide-central-america,#hide-australia").off();
   // console.log("DEBUG ====", stateInfo, southAmericaInfo);
   stateInfo = JSON.parse(JSON.stringify(southAmericaInfo));
   stateInfo2 = JSON.parse(JSON.stringify(southAmericaInfo));
@@ -120,11 +126,12 @@ $("#hide-south-america").click(function(e) {
 })};
 
 // show Canada map and hide thw world flag map image and unbind click on maps and images befor start
-function canadaMap() {
+function canadaMapBinding() {
   $("#hide-canada").click(function(e) {
     $("#world-flag-map,#select-map").hide();
     $("#canada-map,#click-start,#start-game").show();
-    $("#hide-usa,#hide-africa,#hide-europe,#hide-south-america,#hide-asia,#hide-canada,#hide-central-america,#hide-australia").off();
+    $("#hide-usa,#hide-africa,#hide-europe,#hide-south-america").off();
+    $("#hide-asia,#hide-canada,#hide-central-america,#hide-australia").off();
     stateInfo = JSON.parse(JSON.stringify(canadaInfo));
     stateInfo2 = JSON.parse(JSON.stringify(canadaInfo));
     timer = "1:00";
@@ -133,11 +140,12 @@ function canadaMap() {
 })};
 
 // show Asia map and hide thw world flag map image and unbind click on maps and images befor start
-function asiaMap() {
+function asiaMapBinding() {
   $("#hide-asia").click(function(e) {
     $("#world-flag-map,#select-map").hide();
     $("#asia-map,#click-start,#start-game").show();
-    $("#hide-usa,#hide-africa,#hide-europe,#hide-south-america,#hide-asia,#hide-canada,#hide-central-america,#hide-australia").off();
+    $("#hide-usa,#hide-africa,#hide-europe,#hide-south-america").off();
+    $("#hide-asia,#hide-canada,#hide-central-america,#hide-australia").off();
     stateInfo = JSON.parse(JSON.stringify(asiaInfo));
     stateInfo2 = JSON.parse(JSON.stringify(asiaInfo));
     timer = "3:00";
@@ -145,11 +153,12 @@ function asiaMap() {
 })};
 
 // show Central America map and hide thw world flag map image and unbind click on maps and images befor start
-function centralAmericaMap() {
+function centralAmericaMapBinding() {
   $("#hide-central-america").click(function(e) {
     $("#world-flag-map,#select-map").hide();
     $("#central-america-map,#click-start,#start-game").show();
-    $("#hide-usa,#hide-africa,#hide-europe,#hide-south-america,#hide-asia,#hide-canada,#hide-central-america,#hide-australia").off();
+    $("#hide-usa,#hide-africa,#hide-europe,#hide-south-america").off();
+    $("#hide-asia,#hide-canada,#hide-central-america,#hide-australia").off();
     stateInfo = JSON.parse(JSON.stringify(centralAmericaInfo));
     stateInfo2 = JSON.parse(JSON.stringify(centralAmericaInfo));
     timer = "1:00";
@@ -158,11 +167,12 @@ function centralAmericaMap() {
 })};
 
 // show Australia map and hide thw world flag map image and unbind click on maps and images befor start
-function australiaMap() {
+function australiaMapBinding() {
   $("#hide-australia").click(function(e) {
     $("#world-flag-map,#select-map").hide();
     $("#australia-map,#click-start,#start-game").show();
-    $("#hide-usa,#hide-africa,#hide-europe,#hide-south-america,#hide-asia,#hide-canada,#hide-central-america,#hide-australia").off();
+    $("#hide-usa,#hide-africa,#hide-europe,#hide-south-america").off();
+    $("#hide-asia,#hide-canada,#hide-central-america,#hide-australia").off();
     stateInfo = JSON.parse(JSON.stringify(australiaInfo));
     stateInfo2 = JSON.parse(JSON.stringify(australiaInfo));
     timer = "0:30";
@@ -372,13 +382,13 @@ function gameRestartBinding() {
     $("#final-score").removeClass("ec ec-stopwatch ec-muscle ec-plus1 ec-thinking ec-slightly-smiling-face emoji");
     $("#comment").removeClass("ec ec-loudspeaker");
     clearInterval(startInterval);
-    usaMap();
-    africaMap();
-    europeMap();
-    southAmericaMap();
-    asiaMap();
-    canadaMap();
-    centralAmericaMap();
-    australiaMap();    
+    usaMapBinding();
+    africaMapBinding();
+    europeMapBinding();
+    southAmericaMapBinding();
+    asiaMapBinding();
+    canadaMapBinding();
+    centralAmericaMapBinding();
+    australiaMapBinding();    
   })
 }
