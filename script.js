@@ -10,6 +10,11 @@ let minutes = 0;
 let seconds = 0;
 let stateInfoLength;
 let stateInfoLength2;
+let audio1 = new Audio("./audio/game-play.mp3");
+let audio2 = new Audio("./audio/claps3.mp3");
+let audio3 = new Audio("./audio/applause10.mp3");
+let audio4 = new Audio("./audio/boo3.mp3");
+let audio5 = new Audio("./audio/scala-milan.wav");
 
 let usaInfo = {HI:"Hawaii",AK:"Alaska",FL:"Florida",SC:"South Carolina",GA:"Georgia",AL:"Alabama",NC:"North Carolina",
 TN:"Tennessee",RI:"Rhode Island",CT:"Connecticut",MA:"Massachusetts",ME:"Maine",NH:"New Hampshire",VT:"Vermont",
@@ -206,14 +211,15 @@ function gameStartBinding(){
     clickCount = 0;
     $("#start-game").hide();
     $("#score").show();
-    selectName();
-    showInfo();
-    checkMatch();
     $("#click-start").find("#start-game-text").addClass("fadeIn-color");
     $("#score").find("#score-number").addClass("score-color");
     $("#score").find("#percentage").addClass("score-color");
+    selectName();
+    showInfo();
+    checkMatch();
     // set a timer
     let interval = setInterval(function() {
+      audio1.play();
       let timer2 = timer.split(":");
       //by parsing integer, avoid all extra string processing
       let minutes = parseInt(timer2[0], 10);
@@ -265,8 +271,8 @@ function checkMatch() {
       delete stateInfo[newId];
       stateInfoLength = Object.keys(stateInfo).length;
       $("#score-number").text(score);
-      selectName();
       clickCount = 0;
+      selectName();
     }
     else if (guessedName === newName && clickCount === 2){
       // console.log("Correct2!");
@@ -275,8 +281,8 @@ function checkMatch() {
       stateInfoLength = Object.keys(stateInfo).length;
       score -= Math.round((100/stateInfoLength2)/2);
       $("#score-number").text(score);
-      selectName();
       clickCount = 0;
+      selectName();
     }
     else if (guessedName === newName && clickCount > 2) {
       // console.log("Wrong guessing!");
@@ -285,9 +291,9 @@ function checkMatch() {
       stateInfoLength = Object.keys(stateInfo).length;
       score -= Math.round(100/stateInfoLength2);
       $("#score-number").text(score);
-      selectName();
       clickCount = 0;
       clearInterval(startInterval);
+      selectName();
     }
     else if (clickCount === 2) {
       startInterval = setInterval(blinker, 1500);
@@ -305,9 +311,10 @@ function blinker() {
 function gameOver() {
   fadeOut = 0;
   fadeIn = 0;
+  audio1.pause();
+  audio1.currentTime = 0;
   clearInterval(startInterval);
   $("#click-start,#score").hide();
-  // $("#score").hide();
   $("#myModal").modal({backdrop: "static"});
   $("path").removeClass("first-click second-click third-click");
   if (stateInfoLength === 0){
@@ -317,21 +324,25 @@ function gameOver() {
     $("#final-score").text("Your score: " + score + "%");
     switch (true) {
       case (score >= 85):
+      audio2.play();
       $("#comment").text("Excellent job!");
       $("#final-score").addClass("ec ec-muscle emoji");
       $("#comment").addClass("ec ec-loudspeaker emoji-comment");
       break;
       case (score < 85 && score >= 70):
-      $("#comment").text("Nice work!");
+      audio3.play();
+      $("#comment").text("Good job!");
       $("#final-score").addClass("ec ec-plus1 emoji");
       $("#comment").addClass("ec ec-loudspeaker emoji-comment");
       break;
       case (score < 70 && score >= 55):
+      audio3.play();
       $("#comment").text("Good job!");
       $("#final-score").addClass("ec ec-slightly-smiling-face emoji");
       $("#comment").addClass("ec ec-loudspeaker emoji-comment");
       break;
       case (score < 55):
+      audio4.play();
       $("#comment").text("You should study geography!");
       $("#final-score").addClass("ec ec-thinking emoji");
       $("#comment").addClass("ec ec-loudspeaker emoji-comment");
@@ -340,6 +351,7 @@ function gameOver() {
   }
   else if ((seconds <= 0) && (minutes <= 0) && (stateInfoLength === stateInfoLength2)){
     // console.log("Game over!");
+    audio5.play();
     $("#result-header").text("Game over!");
     $("#result-header").addClass("ec ec-lock emoji");
     $("#final-score").text("Time is up!");
@@ -350,6 +362,7 @@ function gameOver() {
   }
   else if ((seconds <= 0) && (minutes <= 0)){
     // console.log("Game over!");
+    audio5.play();
     $("#result-header").text("Game over!");
     $("#result-header").addClass("ec ec-lock emoji");
     $("#final-score").text("Time is up!");
@@ -364,10 +377,9 @@ function gameOver() {
 function gameRestartBinding() {
   $("#close").click(function(e) {
     // console.log("Game restart!");
-    $("path").off();
     score = 100;
     clickCount = 0;
-    info();
+    $("path").off();
     $("#world-flag-map,#select-map").show();
     $("#select-map").show();
     $("#usa-map,#africa-map,#europe-map,#south-america-map,#asia-map,#canada-map,#central-america-map,#australia-map,#click-start,#start-game,#state-id,#score").hide();    
@@ -382,6 +394,7 @@ function gameRestartBinding() {
     $("#final-score").removeClass("ec ec-stopwatch ec-muscle ec-plus1 ec-thinking ec-slightly-smiling-face emoji");
     $("#comment").removeClass("ec ec-loudspeaker");
     clearInterval(startInterval);
+    info();
     usaMapBinding();
     africaMapBinding();
     europeMapBinding();
