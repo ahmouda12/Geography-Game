@@ -337,7 +337,7 @@ function gameOver() {
       break;
       case (score < 70 && score >= 55):
       audio3.play();
-      $("#comment").text("Good job!");
+      $("#comment").text("You could be better!");
       $("#final-score").addClass("ec ec-slightly-smiling-face emoji");
       $("#comment").addClass("ec ec-loudspeaker emoji-comment");
       break;
@@ -382,7 +382,9 @@ function gameRestartBinding() {
     $("path").off();
     $("#world-flag-map,#select-map").show();
     $("#select-map").show();
-    $("#usa-map,#africa-map,#europe-map,#south-america-map,#asia-map,#canada-map,#central-america-map,#australia-map,#click-start,#start-game,#state-id,#score").hide();    
+    $("#usa-map,#africa-map,#europe-map,#south-america-map").hide();    
+    $("#asia-map,#canada-map,#central-america-map,#australia-map").hide();
+    $("#click-start,#start-game,#state-id,#score").hide();        
     $("#start-game-text").text("start button to start the game");
     $("#score-number").text("0");
     $("path").removeClass("first-click second-click third-click");
